@@ -9,8 +9,7 @@ License:	GPL v2
 Group:		Development/Languages/Java
 Source0:	http://dist.sonar.codehaus.org/sonar-1.6.zip
 # Source0-md5:	accde4b27b491e63fdba3995759162f5
-Source1:	%{name}-web.xml
-Source2:	%{name}-context.xml
+Source1:	%{name}-context.xml
 URL:		http://sonar.codehaus.org/
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
@@ -35,8 +34,7 @@ cd war
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},%{_datadir}/%{name},%{_sharedstatedir}/{%{name},tomcat/conf/Catalina/localhost}}
-install %SOURCE1 $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/web.xml
-install %SOURCE2 $RPM_BUILD_ROOT%{_sharedstatedir}/tomcat/conf/Catalina/localhost/%{name}.xml
+install %SOURCE1 $RPM_BUILD_ROOT%{_sharedstatedir}/tomcat/conf/Catalina/localhost/%{name}.xml
 cp -a sonar-web/* $RPM_BUILD_ROOT%{_datadir}/%{name}
 ln -sf %{_sysconfdir}/%{name}/web.xml $RPM_BUILD_ROOT%{_datadir}/%{name}/WEB-INF/web.xml
 
