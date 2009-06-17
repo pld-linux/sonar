@@ -6,7 +6,7 @@ Name:		sonar
 Version:	1.6
 Release:	0.1
 License:	GPL v2
-Group:		Development/Languages/Java
+Group:		Networking/Daemons/Java/Servlets
 Source0:	http://dist.sonar.codehaus.org/sonar-1.6.zip
 # Source0-md5:	accde4b27b491e63fdba3995759162f5
 Source1:	%{name}-context.xml
@@ -35,8 +35,7 @@ cd war
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},%{_datadir}/%{name},%{_sharedstatedir}/{%{name},tomcat/conf/Catalina/localhost}}
 install %SOURCE1 $RPM_BUILD_ROOT%{_sharedstatedir}/tomcat/conf/Catalina/localhost/%{name}.xml
-cp -a sonar-web/* $RPM_BUILD_ROOT%{_datadir}/%{name}
-ln -sf %{_sysconfdir}/%{name}/web.xml $RPM_BUILD_ROOT%{_datadir}/%{name}/WEB-INF/web.xml
+cp -a war/build/sonar-web/* $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -44,7 +43,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %dir %{_sysconfdir}/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/web.xml
 # do not make this file writeable by tomcat. We do not want to allow user to
 # undeploy this app via tomcat manager.
 %config(noreplace) %{_sharedstatedir}/tomcat/conf/Catalina/localhost/%{name}.xml
