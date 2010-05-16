@@ -14,6 +14,7 @@ URL:		http://sonar.codehaus.org/
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	unzip
 Requires:	java-servlet-container
 Requires:	jpackage-utils
 BuildArch:	noarch
